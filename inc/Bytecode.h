@@ -4,6 +4,6 @@
 class Bytecode : public MemoryObject {
 public:
     Bytecode();
-    ~Bytecode();
+    virtual ~Bytecode();
 };
 #endif /* BYTECODE_H_ */

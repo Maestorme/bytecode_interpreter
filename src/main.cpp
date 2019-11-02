@@ -4,11 +4,12 @@
 #include "../inc/MemoryObject.h"
 #include "../inc/RuntimeStackObject.h"
 #include "../inc/Bytecode.h"
+#include "../inc/Value.h"
 
 
 void push_errors(std::vector<MemoryObject*> &memory, int n){
     for(int i = 0; i < n; i++){
-        // memory.push_back(new Value(Value::Error));
+        memory.push_back(new Value());
     }
 }
 
@@ -86,7 +87,7 @@ int main(int argc, char **argv){
                                   (file_contents[i+1]));
                 
                 //memory.push_back(new Pushi());
-                //memory.push_back(new Value(int_literal));
+                memory.push_back(new Value(int_literal));
                 push_errors(memory, 3);
                 break;
             case 71: //Instruction: pushf
