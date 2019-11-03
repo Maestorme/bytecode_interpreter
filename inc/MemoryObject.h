@@ -1,8 +1,9 @@
 #ifndef MEMORY_OBJECT_H_
 #define MEMORY_OBJECT_H_
 
-#include "RuntimeStackObject.h"
 #include <vector>
+#include <string>
+#include <iostream>
 
 class MemoryObject{
 public:
@@ -14,5 +15,9 @@ public:
     virtual short getShort() = 0;
     virtual int getInt() = 0;
     virtual float getFloat() = 0;
+    virtual std::string getType() = 0;
+    virtual void print(std::ostream&) = 0;
+
+    friend std::ostream& operator<<(std::ostream&, MemoryObject&);
 };
 #endif /* MEMORY_OBJECT_H_ */

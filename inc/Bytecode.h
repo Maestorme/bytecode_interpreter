@@ -2,6 +2,7 @@
 #define BYTECODE_H_
 
 #include "MemoryObject.h"
+#include <string>
 
 class Bytecode : public MemoryObject {
 public:
@@ -12,5 +13,7 @@ public:
     virtual short getShort();
     virtual int getInt();
     virtual float getFloat();
+    virtual std::string getType();
+    virtual void print(std::ostream&);
 };
 #endif /* BYTECODE_H_ */

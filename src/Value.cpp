@@ -68,6 +68,28 @@ void Value::execute(){
     throw "Error: execute() called on a value";
 }
 
+std::string Value::getType(){
+    std::string type = "";
+    switch(value_type){
+        case Char:
+            type = "char";
+            break;
+        case Short:
+            type = "short";
+            break;
+        case Int:
+            type = "int";
+            break;
+        case Float:
+            type = "float";
+            break;
+    }
+    return type;
+}
+
+void Value::print(std::ostream& out){
+    out << *(this); 
+}
 std::ostream& operator<<(std::ostream &out, Value &val){
     out << val.value_type << " ";
     switch(val.value_type){
@@ -87,3 +109,4 @@ std::ostream& operator<<(std::ostream &out, Value &val){
     out << std::endl;
     return out;
 }
+

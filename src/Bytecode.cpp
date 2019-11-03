@@ -18,3 +18,11 @@ int Bytecode::getInt(){
 float Bytecode::getFloat(){
     throw "getFloat() called on a bytecode object.";
 }
+
+std::string Bytecode::getType(){
+    throw "getType() called on a bytecode object.";
+}
+
+void Bytecode::print(std::ostream& out){
+    out << "bytecode";
+}

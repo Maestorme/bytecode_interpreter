@@ -4,6 +4,7 @@
 // #include "RuntimeStackObject.h"
 #include "MemoryObject.h"
 #include <iostream>
+#include <string>
 
 enum valueTag {Char, Short, Int, Float, Error};
 
@@ -21,6 +22,8 @@ public:
     virtual int getInt();
     virtual float getFloat();
     virtual void execute();
+    virtual std::string getType();
+    virtual void print(std::ostream&);
 
     friend std::ostream& operator<<(std::ostream&, Value&);
 private:
