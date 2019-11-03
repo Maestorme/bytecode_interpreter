@@ -4,20 +4,24 @@ Value::Value(){
     value_type = Error;    
 }
 
-Value::Value(char){
+Value::Value(char char_value){
     value_type = Char;
+    this->char_value = char_value;
 }
 
-Value::Value(short){
+Value::Value(short short_value){
     value_type = Short;
+    this->short_value = short_value;
 }
 
-Value::Value(int){
+Value::Value(int int_value){
     value_type = Int;
+    this->int_value = int_value;
 }
 
-Value::Value(float){
+Value::Value(float float_value){
     value_type = Float;
+    this->float_value = float_value;
 }
 
 Value::~Value(){}
@@ -27,8 +31,7 @@ char Value::getChar(){
         return char_value;
     }
     else{
-        std::cerr << "Error: getChar() called, but char not found!" << std::endl;
-        //Think of how to print the stack trace?
+        throw "Error: getChar() called, but char not found!";
     }
 }
 
@@ -37,18 +40,18 @@ short Value::getShort(){
         return short_value;
     }
     else{
-        std::cerr << "Error: getShort() called, but short not found!" << std::endl;
-        //Think of how to print the stack trace?
+        throw "Error: getShort() called, but short not found!";
     }
 }
 
 int Value::getInt(){
+    std::cout << "Calling getInt()" << std::endl;
     if(value_type == Int){
+        std::cout << "Returning int_val: " << int_value << std::endl;
         return int_value;
     }
     else{
-        std::cerr << "Error: getInt() called, but int not found!" << std::endl;
-        //Think of how to print the stack trace? try catch
+        throw "Error: getInt() called, but int not found!";
     }
 }
 
@@ -57,15 +60,14 @@ float Value::getFloat(){
         return float_value;
     }
     else{
-        std::cerr << "Error: getFloat() called, but float not found!" << std::endl;
-        //Think of how to print the stack trace? try catch
+        throw "Error: getFloat() called, but float not found!";
     }
 }
 
 void Value::execute(){
-    std::cerr << "Error: execute() called on a value" << std::endl;
-    //Maybe raise an error? Yep try catch works well.
+    throw "Error: execute() called on a value";
 }
+
 std::ostream& operator<<(std::ostream &out, Value &val){
     out << val.value_type << " ";
     switch(val.value_type){

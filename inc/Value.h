@@ -1,13 +1,13 @@
 #ifndef VALUE_H_
 #define VALUE_H_
 
-#include "RuntimeStackObject.h"
+// #include "RuntimeStackObject.h"
 #include "MemoryObject.h"
 #include <iostream>
 
 enum valueTag {Char, Short, Int, Float, Error};
 
-class Value : public RuntimeStackObject, public MemoryObject{
+class Value : public MemoryObject{
 public:
     Value();
     Value(char);

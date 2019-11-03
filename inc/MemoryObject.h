@@ -1,6 +1,9 @@
 #ifndef MEMORY_OBJECT_H_
 #define MEMORY_OBJECT_H_
 
+#include "RuntimeStackObject.h"
+#include <vector>
+
 class MemoryObject{
 public:
     MemoryObject();

@@ -5,22 +5,20 @@
 #include "../inc/RuntimeStackObject.h"
 #include "../inc/Bytecode.h"
 #include "../inc/Value.h"
+#include "../inc/Program.h"
+#include "../inc/includes.h"
 
-
-void push_errors(std::vector<MemoryObject*> &memory, int n){
+void push_errors_to_memory(int n){
     for(int i = 0; i < n; i++){
-        memory.push_back(new Value());
+        Program::memory.push_back(new Value());
     }
 }
 
 int main(int argc, char **argv){
-    std::vector<RuntimeStackObject*> runtime_stack;
-    int stack_pointer = -1;
-    std::vector<int> frame_pointer_stack;
-    int frame_pointer_stack_pointer = -1;
-    MemoryObject* program_counter;
-    std::vector<MemoryObject*> memory;
-
+    if(argc != 2){
+        std::cerr << "Usage: bin/interpreter <input_file>" << std::endl;
+        return 1;
+    }
     std::ifstream smp_file;
     
     smp_file.open(argv[1], std::ios::in | std::ios::binary);
@@ -34,8 +32,6 @@ int main(int argc, char **argv){
         file_size = smp_file.tellg();
         file_contents = new unsigned char [file_size];
         smp_file.seekg (0, std::ios::beg);
-        // smp_file.read ((char*) file_contents, file_size);
-        // smp_file.close();
     }
 
     //Variable Declarations
@@ -79,16 +75,14 @@ int main(int argc, char **argv){
                 for(int j = 1; j < 5; j++){
                     smp_file.read((char*) file_contents + i + j, 1);
                 }
-                i += 4;
-
                 int_literal = int((file_contents[i+4]) << 24 |
                                   (file_contents[i+3]) << 16 |
                                   (file_contents[i+2]) << 8  |
                                   (file_contents[i+1]));
-                
-                //memory.push_back(new Pushi());
-                memory.push_back(new Value(int_literal));
-                push_errors(memory, 3);
+                i += 4;
+                Program::memory.push_back(new Pushi());
+                Program::memory.push_back(new Value(int_literal));
+                push_errors_to_memory(3);
                 break;
             case 71: //Instruction: pushf
                 break;

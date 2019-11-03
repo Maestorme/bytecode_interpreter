@@ -3,7 +3,7 @@
 # Targets
 	
 interpreter:
-	@g++ ./src/*.cpp -o ./bin/interpreter
+	@g++ ./src/*.cpp ./src/bytecodes/*.cpp -o ./bin/interpreter
 	
 clean:
 	@rm -f ./bin/*
