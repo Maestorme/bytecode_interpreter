@@ -36,6 +36,8 @@ int main(int argc, char **argv){
 
     //Variable Declarations
     int int_literal = 0;
+    short short_literal = 0;
+    float float_literal = 0;
 
     for(int i = 0; i < file_size; i++){
         smp_file.read((char*) file_contents + i, 1);
@@ -45,10 +47,13 @@ int main(int argc, char **argv){
               Comparison Bytecodes
               ====================*/
             case 132: //Instruction: cmpe
+                Program::memory.push_back(new Cmpe());
                 break;
             case 136: //Instruction: cmplt
+                Program::memory.push_back(new Cmplt());
                 break;
             case 140: //Instruction: cmpgt
+                Program::memory.push_back(new Cmpgt());
                 break;
 
             /*======================
@@ -67,8 +72,23 @@ int main(int argc, char **argv){
               Stack Manipulation Bytecodes
               ============================*/
             case 68: //Instruction: pushc
+                //Read the next byte and convert to a character
+                smp_file.read((char*) file_contents + i + 1, 1);
+                Program::memory.push_back(new Pushc());
+                Program::memory.push_back(new Value((char) file_contents[i+1]));
+                i += 1;
                 break;
             case 69: //Instruction: pushs
+                //Read the next 2 bytes and convert to a short
+                for(int j = 1; j < 3; j++){
+                    smp_file.read((char*) file_contents + i + j, 1);
+                }
+                short_literal = short((file_contents[i+2]) << 8  |
+                                      (file_contents[i+1]));
+                i += 2;
+                Program::memory.push_back(new Pushs());
+                Program::memory.push_back(new Value(short_literal));
+                push_errors_to_memory(1);
                 break;
             case 70: //Instruction: pushi
                 //Read the next 4 bytes and convert to an integer
@@ -85,6 +105,18 @@ int main(int argc, char **argv){
                 push_errors_to_memory(3);
                 break;
             case 71: //Instruction: pushf
+                //Read the next 4 bytes and convert to a float
+                for(int j = 1; j < 5; j++){
+                    smp_file.read((char*) file_contents + i + j, 1);
+                }
+                float_literal = float((file_contents[i+4]) << 24 |
+                                  (file_contents[i+3]) << 16 |
+                                  (file_contents[i+2]) << 8  |
+                                  (file_contents[i+1]));
+                i += 4;
+                Program::memory.push_back(new Pushf());
+                Program::memory.push_back(new Value(float_literal));
+                push_errors_to_memory(3);
                 break;
             case 72: //Instruction: pushvc
                 break;

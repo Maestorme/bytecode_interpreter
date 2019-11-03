@@ -12,5 +12,4 @@ void Pushc::execute(){
     Program::stack_pointer++;
     //Increment program_counter
     Program::program_counter += 2;
-
 } 

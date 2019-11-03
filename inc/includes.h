@@ -1,1 +1,7 @@
 #include "bytecodes/Pushi.h"
+#include "bytecodes/Pushs.h"
+#include "bytecodes/Pushc.h"
+#include "bytecodes/Pushf.h"
+#include "bytecodes/Cmpe.h"
+#include "bytecodes/Cmpgt.h"
+#include "bytecodes/Cmplt.h"

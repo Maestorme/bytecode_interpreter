@@ -23,4 +23,5 @@ void Cmpgt::execute(){
     Program::runtime_stack.push_back(new_value);
 
     Program::stack_pointer--;
+    Program::program_counter++;
 } 
