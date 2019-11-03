@@ -2,7 +2,6 @@
 #define PUSHI_H_
 
 #include "../Bytecode.h"
-#include <vector>
 
 class Pushi : public Bytecode{
 public:

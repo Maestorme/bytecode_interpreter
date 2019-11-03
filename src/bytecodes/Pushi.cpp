@@ -1,8 +1,5 @@
 #include "../../inc/bytecodes/Pushi.h"
-#include "../../inc/Value.h"
 #include "../../inc/Program.h"
-#include <vector>
-
 
 Pushi::Pushi(){}
 Pushi::~Pushi(){}
