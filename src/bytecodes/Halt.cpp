@@ -33,4 +33,5 @@ void Halt::execute(){
     else{
         std::cout << "FPSTACK: empty" << std::endl;
     }
+    Program::program_counter++;
 } 
