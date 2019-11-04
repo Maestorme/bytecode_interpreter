@@ -216,7 +216,16 @@ int main(int argc, char **argv){
     delete[] file_contents;
 
     while(Program::program_counter < file_size){
-        Program::memory[Program::program_counter]->execute();
+        try{
+            Program::memory[Program::program_counter]->execute();
+        }
+        catch(const char* e){
+            std::cerr << e << std::endl;
+            std::cerr << "Dumping interpreter state, " << std::endl;
+            Halt* halt_ins = new Halt();
+            halt_ins->execute();
+        }
+        
     }
     
     return 1;

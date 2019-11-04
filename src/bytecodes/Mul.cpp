@@ -25,7 +25,7 @@ void Mul::execute(){
         Program::runtime_stack.pop_back();
         Program::runtime_stack.pop_back();
         //rs.push_back(new Value(int1 * int2))
-        Program::runtime_stack.push_back((new Value(float1 * float2)));
+        Program::runtime_stack.push_back((new Value((float) (float1 * float2))));
     }
     else if (type == "short"){
         short short1 = Program::runtime_stack[Program::stack_pointer - 1]->getShort();
