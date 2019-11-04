@@ -45,9 +45,7 @@ short Value::getShort(){
 }
 
 int Value::getInt(){
-    std::cout << "Calling getInt()" << std::endl;
     if(value_type == Int){
-        std::cout << "Returning int_val: " << int_value << std::endl;
         return int_value;
     }
     else{
@@ -88,10 +86,12 @@ std::string Value::getType(){
 }
 
 void Value::print(std::ostream& out){
+    // std::cout << "Values print called";
     out << *(this); 
 }
 std::ostream& operator<<(std::ostream &out, Value &val){
-    out << val.value_type << " ";
+    // std::cout << "values op<< called;";
+    // out << val.value_type << " ";
     switch(val.value_type){
         case Char:
             out << val.char_value;
@@ -106,7 +106,6 @@ std::ostream& operator<<(std::ostream &out, Value &val){
             out << val.float_value;
             break;
     }
-    out << std::endl;
     return out;
 }
 

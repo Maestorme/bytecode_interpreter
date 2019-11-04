@@ -16,4 +16,6 @@ void Call::execute(){
     Program::program_counter = Program::runtime_stack[Program::stack_pointer]->getInt();
     Program::stack_pointer--;
     Program::runtime_stack.pop_back();
+
+    
 } 

@@ -7,7 +7,7 @@ Printc::~Printc(){}
 
 void Printc::execute(){
     //Print value
-    std::cout << Program::runtime_stack[Program::stack_pointer]->getChar();
+    std::cout << +Program::runtime_stack[Program::stack_pointer]->getChar() << std::endl;
     //Decrement stack_pointer
     Program::stack_pointer--;
     //Pop value off of stack

@@ -1,19 +1,21 @@
 #include "../../inc/bytecodes/Halt.h"
 #include "../../inc/Program.h"
 #include <iostream>
+#include <cstdlib>
 
 Halt::Halt(){}
 Halt::~Halt(){}
 
 void Halt::execute(){
     //Halt
+    std::cout << std::endl << "Compile Values:" << std::endl;
     std::cout << "PC: " << Program::program_counter << std::endl;
     std::cout << "SP: " << Program::stack_pointer << std::endl;
 
     if (Program::runtime_stack.size() != 0){
-        std::cout << "RSTACK: [" << Program::runtime_stack[0];
+        std::cout << "RSTACK: [" << *Program::runtime_stack[0];
         for(int i = 1; i < Program::runtime_stack.size(); i++){
-            std::cout << ", " << Program::runtime_stack[i];
+            std::cout << ", " << *Program::runtime_stack[i];
         }
         std::cout << "]" << std::endl;
     }
@@ -21,7 +23,7 @@ void Halt::execute(){
         std::cout << "RSTACK: empty" << std::endl;
     }
 
-    std::cout << "FPSP" << Program::frame_pointer_stack_pointer << std::endl;
+    std::cout << "FPSP: " << Program::frame_pointer_stack_pointer << std::endl;
 
     if (Program::frame_pointer_stack.size() != 0){
         std::cout << "FPSTACK: [" << Program::frame_pointer_stack[0];
@@ -33,5 +35,5 @@ void Halt::execute(){
     else{
         std::cout << "FPSTACK: empty" << std::endl;
     }
-    Program::program_counter++;
+    exit(1);
 } 

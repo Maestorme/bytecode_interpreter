@@ -7,7 +7,7 @@ Printf::~Printf(){}
 
 void Printf::execute(){
     //Print value
-    std::cout << Program::runtime_stack[Program::stack_pointer]->getFloat();
+    std::cout << Program::runtime_stack[Program::stack_pointer]->getFloat() << std::endl;
     //Decrement stack_pointer
     Program::stack_pointer--;
     //Pop value off of stack
