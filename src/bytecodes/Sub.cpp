@@ -29,14 +29,14 @@ void Sub::execute(){
         short short2 = Program::runtime_stack[Program::stack_pointer]->getShort();
         Program::runtime_stack.pop_back();
         Program::runtime_stack.pop_back();
-        Program::runtime_stack.push_back((new Value(short1 - short2)));
+        Program::runtime_stack.push_back((new Value((short)(short1 - short2))));
     }
     else {
-        char char1 = Program::runtime_stack[Program::stack_pointer - 1]->getChar();
-        char char2 = Program::runtime_stack[Program::stack_pointer]->getChar();
+        unsigned char char1 = Program::runtime_stack[Program::stack_pointer - 1]->getChar();
+        unsigned char char2 = Program::runtime_stack[Program::stack_pointer]->getChar();
         Program::runtime_stack.pop_back();
         Program::runtime_stack.pop_back();
-        Program::runtime_stack.push_back((new Value(char1 - char2)));
+        Program::runtime_stack.push_back((new Value((char) (char1 - char2))));
     }
     Program::stack_pointer--;
     Program::program_counter++;

@@ -4,7 +4,6 @@
 #include <cstdlib>
 #include <cstring>
 #include "../inc/MemoryObject.h"
-#include "../inc/RuntimeStackObject.h"
 #include "../inc/Bytecode.h"
 #include "../inc/Value.h"
 #include "../inc/Program.h"
